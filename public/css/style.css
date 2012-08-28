@@ -1,0 +1,16 @@
+.navbar-fixed-top .navbar-inner {
+	padding-left: 20px;
+}
+
+#connect-form {
+	padding: 5px 10px;
+}
+#connect-form .control-group {
+	margin-bottom: 10px;
+}
+#connect-form .control-label {
+	width: 80px;
+}
+#connect-form .controls {
+	margin-left: 100px;
+}
