@@ -1,0 +1,15 @@
+{
+	"name": "courtyard",
+	"version": "0.0.1",
+	"author": "t2t2 <taavot@gmail.com>",
+	"description": "IRC client that uses text to speech",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/t2t2/courtyard.git"
+	},
+	"dependencies": {
+	},
+	"engine": {
+		"node": ">=0.8"
+	}
+}

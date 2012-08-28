@@ -1,4 +1,4 @@
 courtyard
 =========
 
-IRC client that use text to speech
+IRC client that uses text to speech
