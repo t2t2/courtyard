@@ -26,6 +26,8 @@ html, body {
 	padding-top: 40px;
 	overflow-y: scroll;
 	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	font-family: monospace;
 }
 .messages>li {
 	padding: 1px 0;

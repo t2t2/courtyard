@@ -1,34 +1,22 @@
-/* Using appjs
- */
+var irc = require("irc"),
+	file = new(require("node-static").Server)('./public'),
+	port = process.argv[2] || 8333;
 
-var app = require("appjs"),
-	irc = require("irc");
+var server = require('http').createServer(function (request, response) {
+    request.addListener('end', function () {
+        //
+        // Serve files!
+        //
+        file.serve(request, response);
+    });
+})
+server.listen(port);
+console.log("Server listening on http://localhost:"+port)
 
-// serve files to browser requests to "http://appjs/*"
-app.serveFilesFrom(__dirname+'/public');
+var io = require("socket.io").listen(server)
 
-var window = app.createWindow('http://appjs/', {
-	width: 700,
-	height: 520,
-});
-window.on('create', function(){
-	console.log("Window Created");
-	window.frame.show();
-	window.frame.center();
-});
-window.on('ready', function(){
-	console.log("Window Ready");
-			window.frame.openDevTools();
-
-	function F12(e){ return e.keyIdentifier === 'F12' }
-	function Command_Option_J(e){ return e.keyCode === 74 && e.metaKey && e.altKey }
-
-	window.addEventListener('keydown', function(e){
-		if (F12(e) || Command_Option_J(e)) {
-			window.frame.openDevTools();
-		}
-	});
-	window.makeconnect = function(server, nick, channel) {
+io.sockets.on("connection", function(socket) {
+	socket.on("connect-to-irc", function(server, nick, channel) {
 		console.log("Connect to", server);
 		var client = new irc.Client(server, nick, {
 			userName: nick+"-courtyard",
@@ -40,11 +28,9 @@ window.on('ready', function(){
 		client.addListener('message', function(nick, to, text, message) {
 			console.log("Message:", nick, to, text);
 			if(to == channel) {
-				window.getMessage(nick, to, text)
+				socket.emit("getMessage", nick, to, text)
 			}
 		});
-	}
+	});
 });
-window.on('close', function() {
 
-});

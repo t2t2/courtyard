@@ -1,3 +1,5 @@
+var socket = io.connect();
+
 $(function() {
 	$(document).on("click focus", ".control-group.error input", function() {
 		$(this).parents(".control-group.error").removeClass("error")
@@ -20,17 +22,14 @@ $(function() {
 		if(!irc_server && !irc_username && !irc_channel) {
 			return false
 		}
-		makeconnect(irc_server, irc_username, irc_channel)
+		socket.emit("connect-to-irc", irc_server, irc_username, irc_channel)
 		$("#irc-server, #irc-username, #irc-channel").val("")
 		$('#connect-form').parent().removeClass('open')
 		return false
 	});
 });
 
-function addTab(id, title) {
-
-}
-function getMessage(nick, to, text) {
+socket.on("getMessage", function(nick, to, text) {
 	$("#messages").append($("<li></li>").text("<"+nick+"> "+text))
 	speak.play(text);
-}
+});

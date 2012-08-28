@@ -8,8 +8,9 @@
 		"url": "https://github.com/t2t2/courtyard.git"
 	},
 	"dependencies": {
-		"appjs": "0.0.x",
-		"irc": "0.3.x"
+		"irc": "0.3.x",
+		"node-static": "0.6.x",
+		"socket.io": "0.9.x"
 	},
 	"engine": {
 		"node": ">=0.8"
