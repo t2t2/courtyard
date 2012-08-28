@@ -28,8 +28,14 @@
 							</div>
 						</div>
 						<div class="control-group">
+							<label class="control-label" for="irc-username">Channel</label>
 							<div class="controls">
-								<button class="btn">Connect</button>
+								<input type="text" id="irc-channel" placeholder="Channel" />
+							</div>
+						</div>
+						<div class="control-group">
+							<div class="controls">
+								<button type="submit" class="btn">Connect</button>
 							</div>
 						</div>
 					</form>
@@ -38,7 +44,13 @@
 		</div>
 	</div>
 	<div id="tab-content" class="tab-content">
+		<ul id="messages" class="messages unstyled">
+
+		</ul>
 	</div>
+	<div id="audio"></div>
+	<script src="js/speakClient.js"></script>
+	<script src="js/soundmanager2-jsmin.js"></script>
 	<script src="js/jquery-1.8.0.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/script.js"></script>
