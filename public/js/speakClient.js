@@ -81,11 +81,16 @@
         return ret;
       }
 
-      document.getElementById("audio").innerHTML=("<audio id=\"player\" src=\"data:audio/x-wav;base64,"+encode64(wav)+"\">");
+      /* Recoded to support async playback */
+      var playerel = $("<audio>").attr("src", "data:audio/x-wav;base64,"+encode64(wav))
       if (onended) {
-        document.getElementById("player").addEventListener('ended', onended);
+        playerel.on("ended", onended);
       }
-      document.getElementById("player").play();
+      playerel.on("ended", function() {
+        $(this).remove()
+      });
+      $("#audio").append(playerel)
+      playerel.get(0).play();
     }
 
     function playAudioDataAPI(data) {

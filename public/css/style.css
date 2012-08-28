@@ -24,10 +24,15 @@ html, body {
 	height: 100%;
 	width: 100%;
 	padding-top: 40px;
-	overflow-y: scroll;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	font-family: monospace;
+}
+.messages {
+	height: 100%;
+	width: 100%;
+	overflow-y: scroll;
+	margin: 0;
 }
 .messages>li {
 	padding: 1px 0;

@@ -32,4 +32,5 @@ $(function() {
 socket.on("getMessage", function(nick, to, text) {
 	$("#messages").append($("<li></li>").text("<"+nick+"> "+text))
 	speak.play(text);
+	$("#messages").get(0).scrollTop = $("#messages").get(0).scrollHeight
 });
